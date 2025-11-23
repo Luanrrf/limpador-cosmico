@@ -22,7 +22,7 @@ export const createPlayer = (
     id,
     k.area(),
     k.body(),
-  ]);
+  ]) as any;
 
   k.onKeyDown(keys.left, () => p.move(-speed, 0));
   k.onKeyDown(keys.right, () => p.move(speed, 0));

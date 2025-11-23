@@ -1,4 +1,4 @@
-import { KAPLAYCtx } from "kaplay";
+import { GameObj, KAPLAYCtx, Vec2 } from "kaplay";
 import { createPlayer } from "../entities/player";
 import { createEnemy } from "../entities/enemy";
 import { createScore } from "../entities/score";
@@ -54,7 +54,7 @@ export const mainScene = (k: KAPLAYCtx) => {
       if (k.get(DETRITO).length < LIMITE) spawnDetrito(k, DETRITO);
     });
 
-    const coletar = (player, d) => {
+    const coletar = (player: { scale: Vec2; }, d: GameObj<any>) => {
       k.destroy(d);
       pontuacao += PONTOS;
       score.text = `Pontos: ${pontuacao}`;
@@ -63,8 +63,8 @@ export const mainScene = (k: KAPLAYCtx) => {
       k.wait(0.1, () => (player.scale = k.vec2(1)));
     };
 
-    p1.onCollide(DETRITO, (d) => coletar(p1, d));
-    p2.onCollide(DETRITO, (d) => coletar(p2, d));
+    p1.onCollide(DETRITO, (d: GameObj<any>) => coletar(p1, d));
+    p2.onCollide(DETRITO, (d: GameObj<any>) => coletar(p2, d));
 
     const morrer = () => k.go("derrota", pontuacao);
 

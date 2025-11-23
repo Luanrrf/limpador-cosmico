@@ -10,5 +10,5 @@ export const createEnemy = (k: KAPLAYCtx, id: string) => {
     k.area(),
     k.body(),
     "seguir_jogador",
-  ]);
+  ]) as any;
 };
